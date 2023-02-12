@@ -10,7 +10,7 @@ language of choice, and freebird allows tangling or weaving to either
 format without even needing to know anything about them.
 
 It is heavily inspired by [Literate Haskell](https://wiki.haskell.org/Literate_programming),
-which is [where the 'Bird-style' method of annotation originates.](https://www.haskell.org/onlinereport/literate.html).
+which is [where the 'Bird-style' method of annotation originates](https://www.haskell.org/onlinereport/literate.html).
 However, it also borrows features from other literate programming paradigms ([like org-mode babel](https://orgmode.org/worg/org-contrib/babel/intro.html))
 
 Vocabulary
@@ -56,11 +56,13 @@ start with a header, for example:
     <--
 ```
 
-which is a TOML-formatted list of items: \"weave\": what file ending the
-woven documentation should have. \"tangle\": what file ending the
-tangled documentation should have. \"begin~src~\": how the weave
-language begins a code block. \"end~src~\": how the weave language ends
-a code block. Other optional header items can be added where supported.
+which is a TOML-formatted list of items:
+- \"weave\": what file ending the woven documentation should have. 
+- \"tangle\": what file ending the tangled source code should have. 
+- \"begin~src~\": how the weave language begins a code block. 
+- \"end~src~\": how the weave language ends a code block. 
+
+Other optional header items can be added where supported.
 
 In this example, the freebird document would be Markdown documentation
 on C++ code.
@@ -73,8 +75,9 @@ Please see the Examples folder.
 Syntax
 ======
 
-The freebird syntax is as follows: FREEBIRD--\> indicates start of
-freebird header. \<-- indicates end of freebird header.
+The freebird syntax is as follows: 
+- FREEBIRD--\> indicates start of freebird header. 
+- \<-- indicates end of freebird header.
 
 Markers for code: 
 - \> : marks a line of code. 
