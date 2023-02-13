@@ -3,7 +3,7 @@
 What is freebird?
 =================
 
-freebird is a literate programming tool which aims to do as little as
+freebird is a [literate programming](http://www.literateprogramming.com/) tool which aims to do as little as
 possible. The user should write their documentation in their
 documentation language of choice, and their code in their programming
 language of choice, and freebird allows tangling or weaving to either
@@ -16,8 +16,8 @@ However, it also borrows features from other literate programming paradigms ([li
 Vocabulary
 ==========
 
-freebird borrows Knuth\'s vocabulary for the processing of literate
-programming files:
+freebird borrows [Knuth\'s vocabulary](https://en.wikipedia.org/wiki/Web_(programming_system)) 
+for the processing of literate programming files:
 
 - tangle: to produce source code from a literate programming document.
 - weave: to produce documentation from a literate programming document.
