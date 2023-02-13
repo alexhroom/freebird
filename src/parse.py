@@ -43,10 +43,12 @@ def tangle(filepath: pathlib.Path, output_filetype: str):
     with open(filepath, "r", encoding="utf-8") as file:
         with open(output_filename, "w", encoding="utf-8") as output:
             pattern = re.compile(
-                r"(?<=>\* ).*\n+|(?<=> ).*\n+|(?<=>BEGIN\n)[\S\s]*\n(?=>END\n)"
+                r"(?:>\* |> )(.*\n+)|(?:>BEGIN\n)([\S\s]*\n)(?:>END\n)"
             )
             tangled_text = re.findall(pattern, file.read())
+            # flatten capture group tuples down into just strings and
             # remove final newline so end of file doesn't have 2 newlines
+            tangled_text = [x[0] if x[1] == "" else x[1] for x in tangled_text]
             tangled_text[-1] = tangled_text[-1].strip("\n")
             output.write("".join(tangled_text) + "\n")
 
