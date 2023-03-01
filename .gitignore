@@ -1,3 +1,2 @@
-.envrc
-/venv
-**/__pycache__
+.stack-work/
+*~
