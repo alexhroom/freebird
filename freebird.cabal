@@ -9,14 +9,14 @@ version:        0.1.0.0
 description:    Please see the README on GitHub at <https://github.com/githubuser/freebird-psc#readme>
 homepage:       https://github.com/alexhroom/freebird#readme
 bug-reports:    https://github.com/alexhroom/freebird/issues
-author:         Author name here
-maintainer:     example@example.com
-copyright:      2023 Author name here
+author:         Alex H. Room
+maintainer:     alexhroom
+copyright:      2023 Alex H. Room
 license:        GPL3
+license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
     README.md
-    CHANGELOG.md
 
 source-repository head
   type: git
