@@ -36,13 +36,13 @@ freebird mainly uses Bird-style to indicate code. This is, at its simplest, done
 >     print(f"Hello, {user}!")
 ```
 
-i.e. code lines begin with \"\> \" (greater-than-sign, space). This is
+i.e. code lines begin with "`> `" (greater-than-sign, space). This is
 in line with literate Haskell code, however there are some variants on it:
 
-- \"\>\* \" (greater-than, asterisk, space) denotes code which should be hidden from woven documentation
+- "`>* `" (greater-than, asterisk, space) denotes code which should be hidden from woven documentation
   (e.g. import statements that don\'t add anything to your documentation) 
-- \"\>\\ \" (greater-than, backslash, space) denotes a literal \'\>\', which is not taken as code for tangling, 
-  and is woven as a \'\>\' (for example, for Markdown quote blocks)
+- "`>\ `" (greater-than, backslash, space) denotes a literal \'\>\', which is not taken as code for tangling, 
+  and is woven as the text '`> `' (for example, for Markdown quote blocks)
 
 As for knowing what to weave or tangle to, the freebird document should
 start with a header, for example:
@@ -76,14 +76,14 @@ Syntax
 ======
 
 The freebird syntax is as follows: 
-- FREEBIRD--\> indicates start of freebird header. 
-- \<-- indicates end of freebird header.
+- `FREEBIRD-->` indicates start of freebird header. 
+- `<--` indicates end of freebird header.
 
 Markers for code: 
-- \> : marks a line of code. 
-- \>\* : marks a \'hidden\' line of code (not shown in woven documentation)
-- \>BEGIN : marks the start of a multi-line block of code. 
-- \>END : marks the end of a multi-line block of code.
+- `> `: marks a line of code. 
+- `>* `: marks a \'hidden\' line of code (not shown in woven documentation)
+- `>BEGIN`: marks the start of a multi-line block of code. 
+- `>END`: marks the end of a multi-line block of code.
 
 Goals
 =====
