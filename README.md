@@ -59,8 +59,8 @@ start with a header, for example:
 which is a TOML-formatted list of items:
 - \"weave\": what file ending the woven documentation should have. 
 - \"tangle\": what file ending the tangled source code should have. 
-- \"begin~src~\": how the weave language begins a code block. 
-- \"end~src~\": how the weave language ends a code block. 
+- \"begin_src\": how the weave language begins a code block. 
+- \"end_src\": how the weave language ends a code block. 
 
 Other optional header items can be added where supported.
 
@@ -93,9 +93,11 @@ Goals
   page. 
 - Extensibility. Further owing to the \'header\' format, it\'s easy
   for developers to add extra settings etc. for the processing of freebird
-  documents. \'Plug-and-play\': freebird shouldn\'t ever need to know what
+  documents. 
+- \'Plug-and-play\': freebird shouldn\'t ever need to know what
   you\'re using to write code or documentation, only what the export
-  filetypes are called, and how to start and end a codeblock. 
+  filetypes are called, and how to start and end a codeblock. This also 
+  provides a shallow learning curve and more flexibility (through ignorance)
 - Complete portability: the freebird header system means that (in theory) nothing except
   freebird needs to be installed for freebird documents to be woven or tangled.
 
@@ -112,7 +114,25 @@ Non-goals
       documentation, so needs to learn minimal extra to start writing
       literate programs. They can also use whatever they like regardless
       of how arcane it is, rather than it having to be supported by the
-      system.
+      system; it's just two languages interleaved, rather than both with a third system.
   2.  backends don\'t need to be written for anyone\'s preference: I
       don\'t have to write an interface for TeX, then for Markdown, then
       HTML, roff, man pages...
+
+Other options
+=============
+
+Here are some other literate programming systems.
+
+- [NOWEB](https://www.cs.tufts.edu/~nr/noweb/) is probably the most popular;
+  it supports any programming language, and has (La)TeX, HTML and troff backends. 
+  Thus it is programming language independent, but *not* documentation language independent. It also has quite simple syntax.
+- Some people use [Emacs Org-Mode with Babel](https://orgmode.org/worg/org-contrib/babel/index.html) for this purpose; 
+  Emacs has an incredibly mature ecosystem and even simpler syntax 
+  (code blocks just start and end with `#+BEGIN_SRC` and `#+END_SRC`) but it is again not documentation-independent, 
+  and has a pretty steep learning curve. 
+- [Jupyter Notebooks](https://jupyter.org/) are a newer option than the previous two.
+  Being able to run code blocks independently and see their output is great
+  (especially for quick feedback on code you're fiddling with) but it's not particularly well-built to work with anything
+  except Python - it is also unsuitable for larger (than one file) projects or libraries, the files are not particularly
+  readable without Jupyter (this is especially a problem for Git, partially remedied by [nbdime](https://github.com/jupyter/nbdime))
