@@ -1,3 +1,4 @@
+
 # freebird
 
 What is freebird?
@@ -32,9 +33,10 @@ How does it work?
 freebird mainly uses Bird-style to indicate code. This is, at its simplest, done like so:
 
 ```
-> def hello(user):
->     print(f"Hello, {user}!")
-```
+```python
+def hello(user):
+    print(f"Hello, {user}!")
+``````
 
 i.e. code lines begin with "`> `" (greater-than-sign, space). This is
 in line with literate Haskell code, however there are some variants on it:

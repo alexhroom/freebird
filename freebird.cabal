@@ -34,13 +34,15 @@ library
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
       base >=4.7 && <5
+    , directory
     , filepath
+    , options
     , parsec
     , text
     , tomland
   default-language: Haskell2010
 
-executable freebird
+executable freebird-exe
   main-is: Main.hs
   other-modules:
       Paths_freebird
@@ -49,8 +51,10 @@ executable freebird
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , directory
     , filepath
     , freebird
+    , options
     , parsec
     , text
     , tomland
@@ -66,8 +70,10 @@ test-suite freebird-test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , directory
     , filepath
     , freebird
+    , options
     , parsec
     , text
     , tomland
