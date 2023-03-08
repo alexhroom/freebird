@@ -24,6 +24,8 @@ dependencies:
 - tomland
 - text
 - filepath
+- options
+- directory
 
 ghc-options:
 - -Wall

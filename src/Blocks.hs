@@ -45,9 +45,6 @@ concatBlock (Block type1 val1) (Block _ val2) = Block type1 (val1 ++ "\n" ++ val
 concatBlocks :: [Block] -> [Block]
 concatBlocks [] = []
 concatBlocks [x] = [x]
-concatBlocks [x, y]
-    | isCode x && isCode y = [concatBlock x y]
-    | otherwise = [x, y]
 concatBlocks (x:y:zs)
     | isCode x && isCode y = concatBlocks (concatBlock x y : zs)
     | otherwise = x : concatBlocks (y:zs)
