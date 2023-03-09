@@ -12,7 +12,6 @@ format without even needing to know anything about them.
 
 It is heavily inspired by [Literate Haskell](https://wiki.haskell.org/Literate_programming),
 which is [where the 'Bird-style' method of annotation originates](https://www.haskell.org/onlinereport/literate.html).
-However, it also borrows features from other literate programming paradigms ([like org-mode babel](https://orgmode.org/worg/org-contrib/babel/intro.html))
 
 Vocabulary
 ==========
@@ -33,10 +32,9 @@ How does it work?
 freebird mainly uses Bird-style to indicate code. This is, at its simplest, done like so:
 
 ```
-```python
-def hello(user):
-    print(f"Hello, {user}!")
-``````
+> def hello(user):
+>    print(f"Hello, {user}!")
+```
 
 i.e. code lines begin with "`> `" (greater-than-sign, space). This is
 in line with literate Haskell code, however there are some variants on it:
@@ -72,7 +70,7 @@ on C++ code.
 Examples
 ========
 
-Please see the Examples folder.
+Please see the `examples` folder.
 
 Syntax
 ======
@@ -87,8 +85,8 @@ Markers for code:
 - `>BEGIN`: marks the start of a multi-line block of code. 
 - `>END`: marks the end of a multi-line block of code.
 
-Goals
-=====
+Benefits of freebird
+====================
 
 - A lightweight literate programming format. Beyond the Bird-style syntax,
   all that\'s required is attaching a TOML document to the top of your
@@ -102,6 +100,7 @@ Goals
   provides a shallow learning curve and more flexibility (through ignorance)
 - Complete portability: the freebird header system means that (in theory) nothing except
   freebird needs to be installed for freebird documents to be woven or tangled.
+- 
 
 Non-goals
 =========
@@ -121,6 +120,25 @@ Non-goals
       don\'t have to write an interface for TeX, then for Markdown, then
       HTML, roff, man pages...
 
+Recommendations for workflows
+=============================
+
+This section contains some recommendations for various programming workflows.
+
+- A handful of issues which coincide:
+  - My desired documentation format sucks to write in! (like HTML)
+  - I want to publish my documents in multiple formats!
+
+  The solution to all of these problems is [pandoc](https://pandoc.org/); write in whatever
+  is comfortable for you, and then use pandoc to convert to other formats. For web publishing,
+  either pandoc to HTML, or do the following:
+
+  - I want to put my documentation on the web!
+
+    As before, pandoc to HTML is an option. Otherwise, a better solution might be using
+    something like [Sphinx](https://www.sphinx-doc.org/en/master/); through this you can
+    write your documentation in .rst, weave it, and then build it with Sphinx.
+
 Other options
 =============
 
@@ -138,3 +156,6 @@ Here are some other literate programming systems.
   (especially for quick feedback on code you're fiddling with) but it's not particularly well-built to work with anything
   except Python - it is also unsuitable for larger (than one file) projects or libraries, the files are not particularly
   readable without Jupyter (this is especially a problem for Git, partially remedied by [nbdime](https://github.com/jupyter/nbdime))
+- [Literate Haskell](https://wiki.haskell.org/Literate_programming), as mentioned before, is freebird's main inspiration. 
+  Of course, its biggest limitation is that it only supports Haskell code, as well as limited documentation
+  languages. However, literate Haskell files can be directly compiled without needing to be tangled first.
