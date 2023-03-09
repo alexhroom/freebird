@@ -12,7 +12,7 @@ import System.Directory
   , getDirectoryContents
   )
 import System.Environment (getArgs)
-import System.FilePath ((-<.>), (</>), normalise, takeBaseName, takeDirectory)
+import System.FilePath ((-<.>), (</>), normalise, takeDirectory)
 import System.IO
 
 import Blocks
