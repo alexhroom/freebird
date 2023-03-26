@@ -43,7 +43,8 @@ hiddenCodeLine = do
 multiCodeLine :: Parsec String st Block
 multiCodeLine = do
   _ <- string ">BEGIN\n"
-  block <- manyTill anyChar (string ">END\n")
+  block <- untilP (string ">END\n")
+  _ <- string ">END\n"
   return $ Block MultiCode block
 
 -- parses any type of code block; combines the previous three parsers
