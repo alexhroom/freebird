@@ -51,13 +51,25 @@ multiCodeLine = do
 codeBlock :: Parsec String st Block
 codeBlock = try markedCodeLine <|> try hiddenCodeLine <|> try multiCodeLine
 
+
 -- parses text; anything which isn't a codeblock or header.
-textBlock :: Parsec String st Block
-textBlock = do
-  block <- untilP $ codeBlock <|> (eof >> return (Block Blocks.Empty ""))
+paragraph :: Parsec String st Block
+paragraph = do
+  block <- untilP $ codeBlock <|> quoteLine <|> (eof >> return (Block Blocks.Empty ""))
   if block /= ""
     then return $ Block Text block
     else return $ Block Blocks.Empty ""
+
+-- parses text starting with the >\ token
+quoteLine :: Parsec String st Block
+quoteLine = do
+  _ <- string ">\\ "
+  block <- manyTill anyChar (string "\n")
+  return $ Block Text ("> " ++ block ++ "\n")
+
+textBlock :: Parsec String st Block
+textBlock = try quoteLine <|> try paragraph
+
 
 -- parser for FREEBIRD header, beginning with FREEBIRD--> and ending with <--
 header :: Parsec String st Block
@@ -65,6 +77,7 @@ header = do
   _ <- string "FREEBIRD-->\n"
   block <- manyTill anyChar (string "<--")
   return $ Block Header block
+
 
 -- helper function which parses until reaching a different type of parser
 untilP :: Stream s m Char => ParsecT s u m a -> ParsecT s u m String
