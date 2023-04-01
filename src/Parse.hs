@@ -55,7 +55,7 @@ codeBlock = try markedCodeLine <|> try hiddenCodeLine <|> try multiCodeLine
 -- parses text; anything which isn't a codeblock or header.
 paragraph :: Parsec String st Block
 paragraph = do
-  block <- untilP $ codeBlock <|> (eof >> return (Block Blocks.Empty ""))
+  block <- untilP $ codeBlock <|> quoteLine <|> (eof >> return (Block Blocks.Empty ""))
   if block /= ""
     then return $ Block Text block
     else return $ Block Blocks.Empty ""
@@ -65,10 +65,10 @@ quoteLine :: Parsec String st Block
 quoteLine = do
   _ <- string ">\\ "
   block <- manyTill anyChar (string "\n")
-  return $ Block Text ("> " ++ block)
+  return $ Block Text ("> " ++ block ++ "\n")
 
 textBlock :: Parsec String st Block
-textBlock = try paragraph <|> try quoteLine
+textBlock = try quoteLine <|> try paragraph
 
 
 -- parser for FREEBIRD header, beginning with FREEBIRD--> and ending with <--
